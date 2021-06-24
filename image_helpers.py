@@ -29,7 +29,8 @@ def is_image(file: "") -> bool:
     :param file:
     :return:
     """
-    if imghdr.what(file) is not None:
-        return True
-    else:
-        return False
+    if '.' in file:
+        if imghdr.what(file) is not None:
+            return True
+        else:
+            return False

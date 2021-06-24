@@ -27,7 +27,7 @@ def getFrame(video, frame_at_second, output_path, image_basename, image_identifi
     video.set(cv2.CAP_PROP_POS_MSEC, frame_at_second * 1000)
     hasFrames, frame = video.read()
     if hasFrames:
-        cv2.imwrite(output_path + image_basename + "_" + str(image_identifier) + ".jpg",
+        cv2.imwrite(output_path + "/" + image_basename + "_" + str(image_identifier) + ".jpg",
                     frame)  # save frame as JPG file
     return hasFrames
 

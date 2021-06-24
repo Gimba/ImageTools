@@ -1,4 +1,5 @@
 from PIL import Image
+import imghdr
 
 
 def is_grey_scale(img: Image) -> bool:
@@ -19,3 +20,16 @@ def is_grey_scale(img: Image) -> bool:
             diff += rg + rb + gb;
 
     return diff < 100
+
+
+def is_image(file: "") -> bool:
+    """
+    Separate images from movies and other files
+
+    :param file:
+    :return:
+    """
+    if imghdr.what(file) is not None:
+        return True
+    else:
+        return False

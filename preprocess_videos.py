@@ -46,6 +46,14 @@ def main(argv):
     if not os.path.exists("night"):
         os.mkdir("night")
 
+    for file in images_files:
+        if ih.is_image(file):
+            img = Image.open(file).convert('RGB')
+            if ih.is_grey_scale(img):
+                os.replace(file, "night/" + file)
+            else:
+                os.replace(file, "day/" + file)
+
 
 if __name__ == '__main__':
     main(sys.argv)

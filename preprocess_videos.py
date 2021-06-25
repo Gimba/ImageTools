@@ -37,6 +37,15 @@ def main(argv):
             # convert video to images
             vh.video2img(file, 10, args.outputDir)
 
+    # sort images in day and night
+    os.chdir(outputDir)
+    images_files = os.listdir()
+    print(images_files)
+    if not os.path.exists("day"):
+        os.mkdir("day")
+    if not os.path.exists("night"):
+        os.mkdir("night")
+
 
 if __name__ == '__main__':
     main(sys.argv)

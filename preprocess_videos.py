@@ -1,6 +1,10 @@
 #!/usr/bin/env python3
 import argparse
 import sys
+import video_helpers as vh
+import image_helpers as ih
+from PIL import Image
+import os
 
 
 def main(argv):
@@ -19,6 +23,19 @@ def main(argv):
         default='IMAGEDIR'
     )
     args = parser.parse_args()
+    if not os.path.exists(args.outputDir):
+        os.mkdir(args.outputDir)
+    outputDir = args.outputDir
+    files = os.listdir()
+
+    for file in files:
+
+        # check if file is video
+        if vh.is_video(file):
+            print("Found video: " + file)
+
+            # convert video to images
+            vh.video2img(file, 10, args.outputDir)
 
 
 if __name__ == '__main__':
